@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    depends_on:
+      - database
+    tty: true
+    volumes:
+      - ./project:/app
+  database:
+    build: dockerbuild/database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: training
