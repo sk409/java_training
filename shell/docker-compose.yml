@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  app:
+    build: .
+    environment:
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    tty: true
+    volumes:
+      - ./dockerbuild/app/:/home/ec2-user/bamboo/docker/java/sql/
+      - ./dockerbuild/java/insert/App.java:/home/ec2-user/bamboo/s.kobayashi/java/1/App.java #TODO: 実際の問題番号に合わせる
+      - ./dockerbuild/java/select/App.java:/home/ec2-user/bamboo/s.kobayashi/java/2/App.java #TODO: 実際の問題番号に合わせる
+      - ./dockerbuild/java/update/App.java:/home/ec2-user/bamboo/s.kobayashi/java/3/App.java #TODO: 実際の問題番号に合わせる
+      - ./dockerbuild/java/delete/App.java:/home/ec2-user/bamboo/s.kobayashi/java/4/App.java #TODO: 実際の問題番号に合わせる
+      - ./dockerbuild/shell:/home/ec2-user/bamboo/shell
+      - /var/run/docker.sock:/var/run/docker.sock
